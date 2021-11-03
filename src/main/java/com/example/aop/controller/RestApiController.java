@@ -1,6 +1,9 @@
 package com.example.aop.controller;
 
+import com.example.aop.annotation.Decode;
+import com.example.aop.annotation.Timer;
 import com.example.aop.dto.User;
+import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,4 +20,21 @@ public class RestApiController {
         System.out.println("post method : " + user);
         return user;
     }
+
+    @Timer
+    @DeleteMapping("/delete")
+    public void delete() throws InterruptedException{
+        // db login 1~2 sec
+        Thread.sleep(1000 * 2);
+
+    }
+
+    @Decode
+    @PutMapping("/put")
+    public User put(@RequestBody User user) {
+        System.out.println("put");
+        System.out.println(user);
+        return user;
+    }
+
 }

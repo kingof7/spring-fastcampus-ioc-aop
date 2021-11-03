@@ -19,7 +19,7 @@ public class ParameterAop {
         
     }
 
-    @Before("cut()") // (pointcut) cut()이 실행되는 순간
+    //@Before("cut()") // (pointcut) cut()이 실행되는 순간
     public void before(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
@@ -33,7 +33,7 @@ public class ParameterAop {
         }
     }
 
-    @AfterReturning(value = "cut()", returning = "returnObj") // before성공시 반환
+    //@AfterReturning(value = "cut()", returning = "returnObj") // before성공시 반환
     public void afterReturn(JoinPoint joinPoint, Object returnObj) {
         System.out.print("return obj : ");
         System.out.println(returnObj); // echo의 형태로 동작
